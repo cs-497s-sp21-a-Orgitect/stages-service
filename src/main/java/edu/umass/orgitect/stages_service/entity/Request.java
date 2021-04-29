@@ -1,6 +1,6 @@
 package edu.umass.orgitect.stages_service.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,21 +13,23 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Stage {
+public class Request {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String action;
-
-    private Integer ordering;
-
-    private Long duration;
+    @ManyToOne
+    @JoinColumn(name = "process_id")
+    private Process process;
 
     @ManyToOne
-    @JoinColumn (name = "process_id", nullable = false)
-    @JsonIgnore
-    private Process process;
+    @JoinColumn(name = "current_stage_id")
+    private Stage currentStage;
+
+    private Long customerId;
+
+    private Long actorId;
+
 
 }

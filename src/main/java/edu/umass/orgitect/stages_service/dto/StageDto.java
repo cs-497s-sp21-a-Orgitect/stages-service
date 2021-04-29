@@ -17,6 +17,8 @@ public class StageDto {
     private Long id;
     private String action;
     private Long duration;
+    private Integer ordering;
+
 
 
     public static StageDto fromStage(Stage stage) {
@@ -24,6 +26,7 @@ public class StageDto {
                 .id(stage.getId())
                 .action(stage.getAction())
                 .duration(stage.getDuration())
+                .ordering(stage.getOrdering())
                 .build();
     }
 
@@ -32,6 +35,7 @@ public class StageDto {
                 .id(stageDto.getId())
                 .action(stageDto.getAction())
                 .duration(stageDto.getDuration())
+                .ordering(stageDto.getOrdering())
                 .build();
     }
 

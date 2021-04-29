@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  stages:
+    image: melebiary/stages-service:latest
+    container_name: stages
+    ports:
+      - "9000:8080"
+    depends_on:
+      - stages-db
+    environment:
+      - spring.datasource.username=postgres
+      - spring.datasource.password=root
+      - spring.datasource.url=jdbc:postgresql://stages-db:5432/postgres
+
+  stages-db:
+    image: "postgres:13.1-alpine"
+    container_name: stages-db
+    ports:
+      - "5400:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
