@@ -90,4 +90,30 @@ public class RequestService {
 
         return RequestDto.toRequestDto(requestRepository.findAllByCustomerId(customerId));
     }
+
+    public Collection<RequestDto> fetchRequestsForCustomerActor(Long customerId, Long actorId) {
+
+        return RequestDto.toRequestDto(requestRepository.findAllByCustomerIdAndActorId(customerId, actorId));
+
+    }
+
+    public RequestDto setActorIdForRequest(Long requestId, Long actorId) throws NotFoundException {
+        Optional<Request> requestOptional = requestRepository.findById(requestId);
+
+        if (requestOptional.isEmpty()) {
+            throw new NotFoundException("Request not found");
+        }
+
+        Request request = requestOptional.get();
+
+        request.setActorId(actorId);
+
+        Request savedRequest = requestRepository.save(request);
+
+        return RequestDto.fromRequest(savedRequest);
+    }
+
+    public Collection<RequestDto> fetchUnassignedRequests() {
+        return RequestDto.toRequestDto(requestRepository.findAllByActorIdIsNull());
+    }
 }

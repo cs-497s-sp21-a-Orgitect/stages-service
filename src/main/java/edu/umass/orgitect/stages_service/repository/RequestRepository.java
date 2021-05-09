@@ -13,4 +13,8 @@ public interface RequestRepository extends CrudRepository<Request, Long> {
 
     Collection<Request> findAllByCustomerId(Long customerId);
 
+    Collection<Request> findAllByCustomerIdAndActorId(Long customerId, Long actorId);
+
+    Collection<Request> findAllByActorIdIsNull();
+
 }

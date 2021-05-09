@@ -10,7 +10,10 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
+@CrossOrigin
 @RequestMapping("api/v1/request")
 public class RequestController {
 
@@ -53,4 +56,25 @@ public class RequestController {
         return new CollectionResponse<>(requestService.fetchRequestsForCustomer(customerId));
 
     }
+
+    @GetMapping("/customer/{customerId}/actor/{actorId}")
+    CollectionResponse<RequestDto> fetchAllRequestsForCustomerActor(@PathVariable( value = "customerId") Long customerId,
+                                                                    @PathVariable(value = "actorId") Long actorId) {
+
+        return new CollectionResponse<>(requestService.fetchRequestsForCustomerActor(customerId, actorId));
+    }
+
+    @PutMapping("/{requestId}/actor/{actorId}")
+    Response<RequestDto> setActorIdForRequest(@PathVariable(value = "requestId") Long requestId,
+                                              @PathVariable(value = "actorId") Long actorId) throws NotFoundException {
+
+        return new Response<>(requestService.setActorIdForRequest(requestId, actorId));
+    }
+
+    @GetMapping("/unassigned")
+    CollectionResponse<RequestDto> fetchAllUnassignedRequests() {
+
+        return new CollectionResponse<>(requestService.fetchUnassignedRequests());
+    }
+
 }
