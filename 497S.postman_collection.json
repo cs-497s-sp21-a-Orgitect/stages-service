@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "dd5c3f30-ccb3-4e73-9bfd-f352ebea0988",
+		"name": "497S",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Process",
+			"item": [
+				{
+					"name": "POST process",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fix Dell Laptop\",\n    \"description\": \"Blah blah\",\n    \"stages\": [\n        {\n            \"action\": \"Pickup Laptop\",\n            \"duration\": 60,\n            \"ordering\": 0\n        },\n        {\n            \"action\": \"Diagnose laptop\",\n            \"duration\": 60,\n            \"ordering\": 1\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/process",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Process",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/v1/process",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Process",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/process/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Process",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 12,\n    \"name\": \"Cancel Mean Plan\",\n    \"description\": \"Use this process to cancel a meal plan for students\",\n    \"stages\": [\n        {\n            \"action\": \"Login to student spire and cancel meal plan\",\n            \"duration\": 60,\n            \"ordering\": 0\n        },\n        {\n            \"id\": 14,\n            \"action\": \"Refund Student funds\",\n            \"duration\": 30,\n            \"ordering\": 1\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/process/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Request",
+			"item": [
+				{
+					"name": "Add Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"process\": {\n\t\t\"id\": 1\n\t},\n\t\"customerId\": 345223\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request/18",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"process\": {\n            \"id\": 12,\n            \"name\": \"Cancel \",\n            \"description\": \"Use this process to cancel a meal plan for students\",\n            \"stages\": [\n                {\n                    \"id\": 14,\n                    \"action\": \"Refund Student funds\",\n                    \"duration\": 30,\n                    \"ordering\": 1\n                },\n                {\n                    \"id\": 17,\n                    \"action\": \"Login to student spire and cancel meal plan\",\n                    \"duration\": 60,\n                    \"ordering\": 0\n                }\n            ]\n        },\n        \"customerId\": 345223,\n        \"actorId\": 323,\n        \"currentStage\": {\n            \"id\": 17,\n            \"action\": \"Login to student spire and cancel meal plan\",\n            \"duration\": 60,\n            \"ordering\": 0\n        }\n    }"
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request/27",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request",
+								"27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Request For Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Unassigned Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request/unassigned",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request",
+								"unassigned"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set ActorId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request/18/actor/4343",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request",
+								"18",
+								"actor",
+								"4343"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Requests by customer and actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request/customer/345223/actor/323",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request",
+								"customer",
+								"345223",
+								"actor",
+								"323"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move Request to next stage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/request/27/nextStage",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"request",
+								"27",
+								"nextStage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All Stages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/stages",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"stages"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

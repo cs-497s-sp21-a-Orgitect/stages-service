@@ -7,3 +7,8 @@
 ### Run
 1. `gradle build`
 1. `java -jar .\build\libs\stages-service-0.0.1-SNAPSHOT.jar`
+
+### Run using docker-compose
+* Run: `docker-compose up --build`
+* Stop: `docker-compose down`
+
